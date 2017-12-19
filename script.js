@@ -1,23 +1,21 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+const start = document.getElementById("start");
 
-let x = 100;
+const component = (width, height, color, x, y) => {
+  this.width = width;
+  this.height = height;
+  this.x = x;
+  this.y = y;
 
-const drawCircle = () => {
-	if (x > 600) {
-		x = 100;
-	} else {
-		x += 3;
-	}
+  ctx.fillStyle = color;
+  ctx.fillRect(this.x, this.y, this.width, this.height);
 
-	ctx.beginPath();
-	ctx.arc(x,450,40,0,2*Math.PI);
-	ctx.stroke();
 }
 
-const oncePerFrame = () => {
-	ctx.clearRect(0, 0, 1600, 900);
-	drawCircle();
+const startGame = () => {
+  ctx.clearRect(0, 0, 1600, 900);
+  component(30, 30, "blue", 100, 100);
 }
 
-setInterval(oncePerFrame, 1000 / 60);
+start.addEventListener("click", startGame);
